@@ -1,10 +1,25 @@
 package com.lpu.boot1.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+@Entity
 public class Student {
 
+	@Id
 	private int id;
 	private String name;
 	private long phone;
+	
+	@ManyToOne
+	@JoinColumn(name="college_id")
+	@JsonBackReference
+	private College college;
+	
 	public int getId() {
 		return id;
 	}
@@ -26,4 +41,16 @@ public class Student {
 	public Student() {
 		super();
 	}
+//	@Override
+//	public String toString() {
+//		return "Student [id=" + id + ", name=" + name + ", phone=" + phone + "]";
+//	}
+	public College getCollege() {
+		return college;
+	}
+	public void setCollege(College college) {
+		this.college = college;
+	}
+	
+	
 }

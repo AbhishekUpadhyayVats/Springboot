@@ -96,4 +96,11 @@ public class MyController {
 		
 		return s;
 	}
+	
+	
+	// http://localhost:8080/emp/106?naam=Abhishek Upadhyay&sal=200000
+	@GetMapping("/emp/{id}")
+	public String getEmp(@PathVariable int id, @RequestParam("naam") String name, @RequestParam double sal) {
+		return "ID="+id +", NAME="+name+", SALARY="+sal;
+	}
 }
